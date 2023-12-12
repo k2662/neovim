@@ -2,6 +2,7 @@
 
 MACOSX_DEPLOYMENT_TARGET="$(sw_vers -productVersion | cut -f1 -d.)"
 export MACOSX_DEPLOYMENT_TARGET
+export CFLAGS="-Wl,-rpath,'$ORIGIN/../lib' -Wl,--enable-new-dtags"
 cmake -S cmake.deps -B .deps -G Ninja \
   -D CMAKE_BUILD_TYPE=${NVIM_BUILD_TYPE} \
   -D CMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} \
